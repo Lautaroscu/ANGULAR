@@ -1,0 +1,19 @@
+<h1>Lista de Electrodomesticos</h1>
+<table class="table">
+    <thead>
+        <tr>
+         <th>Imagen</th>
+         <th>Nombre</th>
+         <th>Precio</th>
+         <th>Stock</th>
+        </tr>
+    </thead>
+   <tbody>
+    <tr *ngFor="let appliance of appliances" [ngClass]="{'clearence': appliance.clearence}">
+        <td><img class="img" [src]="appliance.image" [alt]="appliance.name"></td>
+        <td>{{appliance.name}}</td>
+        <td>{{appliance.price}}</td>
+        <td><span class="badge text-bg-danger" *ngIf="appliance.stock == 0">SIN STOCK</span></td>
+    </tr>
+   </tbody>
+</table>
