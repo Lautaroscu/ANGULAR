@@ -6,14 +6,26 @@
          <th>Nombre</th>
          <th>Precio</th>
          <th>Stock</th>
+         <th>Compra</th>
         </tr>
     </thead>
    <tbody>
     <tr *ngFor="let appliance of appliances" [ngClass]="{'clearence': appliance.clearence}">
-        <td><img class="img" [src]="appliance.image" [alt]="appliance.name"></td>
+        <td><img width="90" class="thumbnail" [src]="appliance.image" [alt]="appliance.name"></td>
         <td>{{appliance.name}}</td>
         <td>{{appliance.price}}</td>
         <td><span class="badge text-bg-danger" *ngIf="appliance.stock == 0">SIN STOCK</span></td>
+        <td>
+        
+            <button class="btn btn-primary btn-sm" (click)="upQuantity(appliance)">+</button>     
+            <input type="number"
+             [(ngModel)]="appliance.quantity"
+             (keyup)="changeQuantity(appliance , $event)" >  
+          <button class="btn btn-primary btn-sm"  (click)="downQuantity(appliance)">-</button>
+            {{appliance.quantity}} 
+
+
+        </td>
     </tr>
    </tbody>
 </table>

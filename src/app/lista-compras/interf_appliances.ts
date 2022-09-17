@@ -3,5 +3,6 @@
     price : number ,
     stock : number ,
     image: string ,
-    clearence: boolean  
+    clearence: boolean   ,
+    quantity: number ,
 }

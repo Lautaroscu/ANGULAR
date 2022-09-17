@@ -13,21 +13,26 @@ export class ListaComprasComponent implements OnInit {
     price : 95000 ,
     stock : 2 ,
     image : "assets/img/heladera.png" , 
-    clearence: true
+    clearence: true ,
+    quantity: 0 ,
   },{
 
     name : "Lavarropas" ,
     price : 15000 ,
     stock : 3 ,
     image : "assets/img/heladera.png" , 
-    clearence: false
+    clearence: false ,
+    quantity: 0 ,
+
   },{
 
     name : "Computadora" ,
     price : 60000 ,
     stock : 0 ,
     image : "assets/img/heladera.png" , 
-    clearence: false
+    clearence: false ,
+    quantity: 0 ,
+
   }]
 
   
@@ -35,6 +40,18 @@ export class ListaComprasComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  upQuantity(appliances:Appliances): void{
+    appliances.quantity++ ;
+  }
+  downQuantity(appliances:Appliances){
+    appliances.quantity-- ;
+  }
+  changeQuantity(appliances:Appliances, event:KeyboardEvent): void{
+   console.log(event
+    )  ;
+    
+
   }
 
 }
