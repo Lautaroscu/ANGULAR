@@ -1,57 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { Appliances  } from './interf_appliances';
+    import { Component, OnInit } from '@angular/core';
+    import { Appliances  } from './interf_appliances';
 
-@Component({
-  selector: 'app-lista-compras',
-  templateUrl: './lista-compras.component.html',
-  styleUrls: ['./lista-compras.component.scss']
-})
-export class ListaComprasComponent implements OnInit {
-  appliances:Appliances[] = [{
+    @Component({
+      selector: 'app-lista-compras',
+      templateUrl: './lista-compras.component.html',
+      styleUrls: ['./lista-compras.component.scss']
+    })
+    export class ListaComprasComponent implements OnInit {
+      appliances:Appliances[] = [{
 
-    name : "Heladera" ,
-    price : 95000 ,
-    stock : 2 ,
-    image : "assets/img/heladera.png" , 
-    clearence: true ,
-    quantity: 0 ,
-  },{
+        name : "Heladera" ,
+        price : 95000 ,
+        stock : 2 ,
+        image : "assets/img/heladera.png" , 
+        clearence: true ,
+        quantity: 0 ,
+      },{
 
-    name : "Lavarropas" ,
-    price : 15000 ,
-    stock : 3 ,
-    image : "assets/img/heladera.png" , 
-    clearence: false ,
-    quantity: 0 ,
+        name : "Lavarropas" ,
+        price : 15000 ,
+        stock : 250 ,
+        image : "assets/img/heladera.png" , 
+        clearence: false ,
+        quantity: 0 ,
 
-  },{
+      },{
 
-    name : "Computadora" ,
-    price : 60000 ,
-    stock : 0 ,
-    image : "assets/img/heladera.png" , 
-    clearence: false ,
-    quantity: 0 ,
+        name : "Computadora" ,
+        price : 60000 ,
+        stock : 0 ,
+        image : "assets/img/heladera.png" , 
+        clearence: false ,
+        quantity: 0 ,
 
-  }]
+      }]
 
-  
+      
 
-  constructor() { }
+      constructor() { }
 
-  ngOnInit(): void {
-  }
-  upQuantity(appliances:Appliances): void{
-    appliances.quantity++ ;
-  }
-  downQuantity(appliances:Appliances){
-    appliances.quantity-- ;
-  }
-  changeQuantity(appliances:Appliances, event:KeyboardEvent): void{
-   console.log(event
-    )  ;
+      ngOnInit(): void {
+      }
     
 
-  }
-
-}
+    }
