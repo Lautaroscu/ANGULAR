@@ -1,0 +1,25 @@
+
+<section class="comments">
+<table class="table">
+        <thead>
+                <th>Comentario</th>
+                <th>Valoracion</th>
+                <th>Acciones</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let comment of comments; index as i">
+                <td >{{comment.comentario}}</td>
+                <td *ngIf="comment.valoracion == false">Mala</td>
+                <td *ngIf="comment.valoracion == true" >Buena</td>
+                <td>
+                    <button type="button" class="btn-delete" (click)="deleteComment(comment.id_comentario)" >Delete</button>
+                    <button type="button" class="btn-edit">Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td ><button (click)="deleteAllComments()">Clear</button></td>
+            </tr>
+        </tbody>
+</table>
+    
+</section>

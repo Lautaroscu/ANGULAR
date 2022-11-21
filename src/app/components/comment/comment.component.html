@@ -1,0 +1,23 @@
+<section class="comment">
+
+    <div class="row" >
+
+        <div class="card" *ngFor="let item of comment">
+            <div class="card-body" >
+                <h5 class="card-title"> {{item.comentario}}</h5>
+            </div>
+        
+        <div class="card-body">
+            <form action="">
+                <select [name]="">
+                    <option selected>Valoracion</option>
+                    <option [value]="item.valoracion">{{item.valoracion}}</option>
+                  
+                </select>
+                <button type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+   
+</section>

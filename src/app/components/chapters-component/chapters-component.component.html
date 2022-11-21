@@ -1,0 +1,19 @@
+<section class="chapters">  
+
+    <table class="table">
+        <thead>
+                <th>Titulo de capitulo</th>
+                <th>Descripcion</th>
+                <th>Numero de capitulo</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let chapter of chapters; index as i">
+                <td>{{chapter.titulo_cap}}</td>
+                <td >{{chapter.descripcion}}</td>
+                <td>{{chapter.numero_cap}}</td>
+            </tr>
+        </tbody>
+</table>
+    
+
+</section>   
