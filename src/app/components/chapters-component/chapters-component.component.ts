@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ChaptersDataService } from '../../services/chapters-data.service';
 import { CommentsComponentComponent } from '../comments-component/comments-component.component';
 import { Chapters, Comments } from './interf-chapters';
@@ -11,12 +13,15 @@ import { Chapters, Comments } from './interf-chapters';
 export class ChaptersComponentComponent implements OnInit {
   chapters:Chapters[] = [] ;
 
-  constructor(private DataService:ChaptersDataService) { }
+  constructor(private DataService:ChaptersDataService) {
+
+   }
 
   ngOnInit(): void {
       this.DataService.getAll()
       .subscribe(chapters => this.chapters = chapters) ;
      
   }
+ 
 
 }

@@ -7,14 +7,10 @@ export interface Chapters {
 }
 
 export interface Comments {
-    'id_comentario' : string ,
+    'capitulo' : string
     'comentario' : string , 
-    'valoracion' : boolean }
-
-export interface Seasons {
-    'id_temp' : number , 
-    'titulo_temp' : string,
-    'descripcion' : string ,
-    'fecha_estreno' : number ,
-    'numero_temp' : number
+    'valoracion' : string ,
+    'id_comentario' : string ,
+   
 }
+

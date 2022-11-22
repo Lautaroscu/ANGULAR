@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { BreakingBadComponentComponent } from './components/breaking-bad-component/breaking-bad-component.component';
-import { CommentComponent } from './components/comment/comment.component';
 
 const routes: Routes = [
   {
@@ -18,10 +17,7 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent
   } , 
-  {
-    path: 'comments/:id' , 
-    component : CommentComponent
-  }
+ 
 ];
 
 @NgModule({

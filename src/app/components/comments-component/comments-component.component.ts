@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Comments  } from '../chapters-component/interf-chapters';
 import { ChaptersDataService } from '../../services/chapters-data.service';
-import { CommentComponent } from '../comment/comment.component';
+import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-comments-component',
@@ -9,40 +10,68 @@ import { CommentComponent } from '../comment/comment.component';
   styleUrls: ['./comments-component.component.scss']
 })
 
-export class CommentsComponentComponent implements OnInit {
+export class CommentsComponentComponent implements OnInit , OnDestroy{
+  editMode:boolean = false;
   comments:Comments[] = [] ;  
-  
-  constructor(private DataService:ChaptersDataService ) { 
-    this.getAll() ;
+  suscription!:Subscription;
+  id_comentario!:string;
+  @ViewChild('form') form!:NgForm;
+  constructor(private DataService:ChaptersDataService) { 
+
+  }
+getId():any{
+  this.comments.forEach(comment => {
+ 
+ return comment.id_comentario;
+  })
   }
 
+
   ngOnInit(): void {
-    this.DataService.getAllComments() 
-    .subscribe(comments => this.comments = comments) ;
+   this.getAll() ;
+   this.suscription = this.DataService.getRefresh().subscribe(() => {
+    this.getAll() ;
+
+
+   })
+    console.log(this.getId())
+  }
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe() ;
+    console.log("closed");
   }
   getAll():void{
     this.DataService.getAllComments() 
     .subscribe(comments => this.comments = comments) ;
   }  
-    deleteComment(id:string):void{
-    // let CurrentId:any = this.comments.find((id_comment) => {return id_comment.id_comentario == id});
-    this.DataService.deleteComment(id).subscribe(
-      
-    );
-
-    
-  }
-  deleteAllComments():void {
-     this.DataService.deleteAllComments().subscribe(
-    
-     );
-    
+  insertComment(comments:Comments[]):void{
+    if(!this.editMode){
+       this.DataService.insertComment(comments).subscribe()
+  
+    } else{
+      this.updateComment()
+    }
  
-   }
+  }
+  
+  updateComment():void{
+    this.id_comentario = this.getId() ;
+    this.DataService.updateComment(this.id_comentario , this.comments)
+    .subscribe(
+      e => {
+        console.log(e) ;
+      }
+    );
+  }
+}
+  
+  
+ 
+   
 
   
  
-  }
+  
   
   
 

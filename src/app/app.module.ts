@@ -7,7 +7,10 @@ import { CommentsComponentComponent } from './components/comments-component/comm
 import { ChaptersComponentComponent } from './components/chapters-component/chapters-component.component';
 import { BreakingBadComponentComponent } from './components/breaking-bad-component/breaking-bad-component.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommentComponent } from './components/comment/comment.component';
+import { FormsModule } from '@angular/forms';
+import { ActionsComponent } from './components/actions/actions.component';
+import { ActionsButtonsComponent } from './actions-buttons/actions-buttons.component';
+import { FormDataComponent } from './form-data/form-data.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,16 @@ import { CommentComponent } from './components/comment/comment.component';
     CommentsComponentComponent,
     ChaptersComponentComponent,
     BreakingBadComponentComponent,
-    CommentComponent
+    ActionsComponent,
+    ActionsButtonsComponent,
+    FormDataComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule , 
     HttpClientModule ,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
