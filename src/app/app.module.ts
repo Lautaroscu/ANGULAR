@@ -9,7 +9,6 @@ import { BreakingBadComponentComponent } from './components/breaking-bad-compone
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActionsComponent } from './components/actions/actions.component';
-import { ActionsButtonsComponent } from './actions-buttons/actions-buttons.component';
 import { FormDataComponent } from './form-data/form-data.component';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { FormDataComponent } from './form-data/form-data.component';
     ChaptersComponentComponent,
     BreakingBadComponentComponent,
     ActionsComponent,
-    ActionsButtonsComponent,
     FormDataComponent
     
   ],

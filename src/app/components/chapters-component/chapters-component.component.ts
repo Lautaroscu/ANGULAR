@@ -12,6 +12,21 @@ import { Chapters, Comments } from './interf-chapters';
 })
 export class ChaptersComponentComponent implements OnInit {
   chapters:Chapters[] = [] ;
+  images:string[] =  Array(
+    "src\assets\img\c1t1.jpg" ,
+   "src\assets\img\c2t1.jpg" ,
+   "src\assets\img\c3tq1.jpg" ,
+   "src\assets\img\c1t2.jpg" ,
+   "src\assets\img\c2c1.jpg" ,
+   "src\assets\img\c3t2.jpg" ,
+   "src\assets\img\c4t1.jpg" ,
+   "src\assets\img\c4t2.jpg" ,
+   "src\assets\img\c5t1.jpg" ,
+   "src\assets\img\c5t2.jpg" ,
+   "src\assets\img\c6t1.jpg" 
+
+  ) 
+  
 
   constructor(private DataService:ChaptersDataService) {
 
@@ -22,6 +37,7 @@ export class ChaptersComponentComponent implements OnInit {
       .subscribe(chapters => this.chapters = chapters) ;
      
   }
+
  
 
 }

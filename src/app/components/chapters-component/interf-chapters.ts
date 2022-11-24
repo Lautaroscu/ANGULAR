@@ -3,7 +3,8 @@ export interface Chapters {
     'titulo_cap' : string ,
     'descripcion' : string ,
     'numero_cap' : number ,
-    'id_temp_fk' : number
+    'id_temp_fk' : number ,
+    'img' : string
 }
 
 export interface Comments {

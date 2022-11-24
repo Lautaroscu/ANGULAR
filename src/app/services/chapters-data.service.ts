@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http'
 import { map, Observable, Subject, tap } from 'rxjs';
 import { Chapters, Comments } from '../components/chapters-component/interf-chapters';
-const URL:string = 'https://62b49373da3017eabb0d8683.mockapi.io/api/chapters' ;
-const URLCOMMENTS:string = 'https://62b49373da3017eabb0d8683.mockapi.io/api/comments' ;
+const URL:string = 'http://localhost/API-RESTFULL/api/chapters' ;
+const URLCOMMENTS:string = 'http://localhost/API-RESTFULL/api/chapters/comments' ;
+const ALLCOMMENTS:string = 'http://localhost/API-RESTFULL/api/comments' ;
+
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +54,7 @@ export class ChaptersDataService {
     )  
 
   }
-    public updateComment(id:string , comment:Comments[]):Observable<Comments[]>{
+    public updateComment(id:string , comment:Comments[] ):Observable<Comments[]>{
       return this.http.put<Comments[]>(`${URLCOMMENTS}/${id}` , comment)
     }
   

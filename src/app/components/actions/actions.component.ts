@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { EventType } from '@angular/router';
 import { ChaptersDataService } from 'src/app/services/chapters-data.service';
 import { Comments } from '../chapters-component/interf-chapters';
 
@@ -13,10 +14,13 @@ export class ActionsComponent implements OnInit {
 
   @Input()
   id_comentario!: string;
+  
   @Input()
   comments!: Comments[];
   @Input()
   form!: NgForm;
+  @Output() 
+  
 
  
   @Input() 
@@ -26,7 +30,7 @@ export class ActionsComponent implements OnInit {
   constructor(private DataService: ChaptersDataService) { }
 
   ngOnInit(): void {
-   //console.log(this.id_comentario)
+  console.log(this.id_comentario)
   }
   changeValue():boolean{
     return this.editMode =  true;
@@ -45,14 +49,22 @@ export class ActionsComponent implements OnInit {
         valoracion: CurrentComment.valoracion
       }
       )}
-  
+
+  }
+
+  editComment():void{
+    
+    this.DataService.updateComment(this.id_comentario , this.comments )
+    .subscribe(
+      e =>{
+        console.log(e) ;
+      }
+    )
   }
   deleteComment() {
     this.DataService.deleteComment(this.id_comentario)
       .subscribe(
-        e => {
-          console.log(e);
-        }
+       
       )
   }
 
