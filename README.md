@@ -1,4 +1,8 @@
-# Compras
+TODO: El proyecto fue desarrollado consumiendo la API programada en WEB 2, debido a los cors, y que la aplicacion es local, no se podria corregir sin bajar la aplicacion y la base de datos, por este motivo, cambio los endpoints por los de MockApi, queda sin sentido, y la relacion con capitulo-comentario (1 a n), es solamente visual. Me parecia un punto para aclarar.
+
+
+
+# BreakingBad
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
 
