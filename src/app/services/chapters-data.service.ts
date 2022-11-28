@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http'
 import { Observable, Subject, tap } from 'rxjs';
 import { Chapters } from '../components/chapters-component/interf-chapters';
 import { Comments } from '../components/comments-component/interf-comments';

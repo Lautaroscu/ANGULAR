@@ -80,8 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Compras:build" ,
-            "proxyConfig" : "src/proxy.conf.json"
+            "browserTarget": "Compras:build" 
           }
         },
         "test": {
