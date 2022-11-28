@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChaptersDataService } from 'src/app/services/chapters-data.service';
+import { Seasons } from './interf-seasons';
 
 @Component({
   selector: 'app-breaking-bad-component',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreakingBadComponentComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private DataService:ChaptersDataService) { }
+seasons:Seasons[] = [] ;
   ngOnInit(): void {
+    this.getAll() ;
   }
+  public getAll() {
+    this.DataService.getAllSeasons()
+    .subscribe(
+  seasons => {
+    this.seasons = seasons
+    console.log("hola") 
+  });
+  }
+  
 
 }

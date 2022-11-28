@@ -1,19 +1,23 @@
-<section class="chapters">  
 
-    <table class="table table-dark">
-        <thead class="table">
-                <th></th>
-                <th>Titulo de capitulo</th>
-                <th>Descripcion</th>
-                <th>Numero de capitulo</th>
-        </thead>
-        <tbody >
-            <tr class="" *ngFor="let chapter of chapters; index as i " > 
-                <td>{{chapter.titulo_cap}}</td>
-                <td >{{chapter.descripcion}}</td>
-                <td>{{chapter.numero_cap}}</td>
-            </tr>
-           
-        </tbody>
-</table>
+<section class="chapters">  
+    <div class="row">
+ <div class="card" *ngFor="let chapter of chapters  | paginate:page_size:page_number">
+         <div class="card-body">
+            <img src="assets/img/breakingbadimg.png" alt="breakingbadimg" srcset="">
+             <h5 class="card-title"> {{chapter.numero_cap}} {{chapter.titulo_cap}}</h5>
+             <p class="card-text">{{chapter.descripcion | slice:0:50}}... </p>
+            
+         </div>
+ </div>  
+ <div class="paginator">
+    <mat-paginator (page)="handlePage($event)" [length]="chapters.length" [pageSize]="page_size"
+   
+   aria-label="Select page">
+</mat-paginator>
+
+</div>
+</div>
+
+ 
 </section>   
+

@@ -1,5 +1,5 @@
 export interface Chapters {
-    'id_capitulo' : number ,
+    'id_capitulo' : string ,
     'titulo_cap' : string ,
     'descripcion' : string ,
     'numero_cap' : number ,
@@ -7,11 +7,4 @@ export interface Chapters {
     'img' : string
 }
 
-export interface Comments {
-    'capitulo' : string
-    'comentario' : string , 
-    'valoracion' : string ,
-    'id_comentario' : string ,
-   
-}
 

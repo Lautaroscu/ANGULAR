@@ -1,0 +1,9 @@
+<div class="card" *ngFor="let chapter of chapterBySeason">
+    
+    <div class="card-body">
+       <img src="assets/img/breakingbadimg.png" alt="breakingbadimg" srcset="">
+        <h5 class="card-title"> {{chapter.numero_cap}} {{chapter.titulo_cap}}</h5>
+        <p class="card-text">{{chapter.descripcion | slice:0:50}}... </p>
+       
+    </div>
+</div>  

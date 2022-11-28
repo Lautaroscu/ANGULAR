@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Seasons } from './components/breaking-bad-component/interf-seasons';
+import { ChaptersDataService } from './services/chapters-data.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Compras';
-}
+  title = 'Netflix';
+  constructor(private DataService:ChaptersDataService){
+  
+  }
+ 
+  }
+

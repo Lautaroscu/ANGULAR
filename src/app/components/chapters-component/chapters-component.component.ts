@@ -1,9 +1,9 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PageEvent } from '@angular/material';
 import { ChaptersDataService } from '../../services/chapters-data.service';
-import { CommentsComponentComponent } from '../comments-component/comments-component.component';
-import { Chapters, Comments } from './interf-chapters';
+import { Chapters } from './interf-chapters';
 
 @Component({
   selector: 'app-chapters-component',
@@ -12,24 +12,17 @@ import { Chapters, Comments } from './interf-chapters';
 })
 export class ChaptersComponentComponent implements OnInit {
   chapters:Chapters[] = [] ;
-  images:string[] =  Array(
-    "src\assets\img\c1t1.jpg" ,
-   "src\assets\img\c2t1.jpg" ,
-   "src\assets\img\c3tq1.jpg" ,
-   "src\assets\img\c1t2.jpg" ,
-   "src\assets\img\c2c1.jpg" ,
-   "src\assets\img\c3t2.jpg" ,
-   "src\assets\img\c4t1.jpg" ,
-   "src\assets\img\c4t2.jpg" ,
-   "src\assets\img\c5t1.jpg" ,
-   "src\assets\img\c5t2.jpg" ,
-   "src\assets\img\c6t1.jpg" 
+  page_size:number = 10 ;
+  page_number:number = 1;
 
-  ) 
+  handlePage(e:PageEvent):void{
+    this.page_size = e.pageSize ;
+    this.page_number = e.pageIndex+1 ;
+  }
   
 
   constructor(private DataService:ChaptersDataService) {
-
+    
    }
 
   ngOnInit(): void {

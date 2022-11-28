@@ -1,31 +1,39 @@
 <section class="comments">
+
     <div>
+
         <table class="table table-dark">
 
-            <thead class="table">
-                <th>Comentario</th>
+            <thead>
                 <th>Capitulo</th>
+                <th>Comentario</th>
                 <th>Valoracion</th>
                 <th>Acciones</th>
 
             </thead>
             <tbody>
 
-                <tr *ngFor="let comment of comments; index as i">
+                <tr *ngFor="let comment of comments | paginate:page_size:page_number">
+                    <td>{{comment.titulo_cap}}</td>
                     <td>{{comment.comentario}}</td>
-                    <td>{{comment.capitulo}}</td>
-                    <td>{{comment.valoracion}}</td>
+                    <td >{{comment.valoracion}}</td>
+                  
+
 
                     <td>
-                        <app-actions  [(editMode)] = "editMode" [form] = "form" [comments] ="comments" [id_comentario] = "comment.id_comentario" ></app-actions>
-
+                        <app-actions [(editMode)]="editMode" [form]="form" [comments]="comments"
+                            [id_comentario]="comment.id_comentario"></app-actions>
                     </td>
-                   
                 </tr>
-
             </tbody>
-
         </table>
+
+
+        <mat-paginator (page)="handlePage($event)" [length]="comments.length" [pageSize]="page_size"
+            aria-label="Select page">
+        </mat-paginator>
+
+
         <div>
             <div *ngIf="comments.length == 0">Se la primera persona en comentar!!! </div>
 
@@ -35,19 +43,29 @@
 
     <div>
         <h4>Dejar un comentario acerca de un capitulo</h4>
-   <form #form="ngForm" (ngSubmit) ="insertComment(form.value)"   >
-    
-    <input class="form-control" type="text" placeholder="comentario" name="comentario"  ngModel>
+        <form #form="ngForm" (ngSubmit)="insertComment(form.value)">
+            <div *ngFor="let comment of comments">
+                <input  [hidden]="comment.id_comentario" type="text" name="id_comentario" ngModel
+                    [value]="comment.id_comentario">
+            </div>
+            
+                <select  name="id_capitulo_fk" ngModel>
+                    <option value="" selected>Capitulo</option>
+                    <option *ngFor="let chapter of chapters" value="{{chapter.id_capitulo}}">{{chapter.titulo_cap}}
+                    </option>
+                </select>
+           
 
-    <input class="form-control" type="text" placeholder="capitulo" name="capitulo" ngModel>
-    <select class="form-control"  name="" id="" name = "valoracion" ngModel>
-        <option value="" selected disabled>Valoracion</option>
-        <option value="Buena">Buena</option>
-        <option value="Mala">Mala</option>
-</select>
-  
-        <input class="btn btn-success" type="submit" value="{{editMode ? 'Update Product' : 'Add Product'}}">
-   </form>
+
+            <input class="form-control" type="text" placeholder="comentario" name="comentario" ngModel>
+
+            <select class="form-control" name="" id="" name="valoracion" ngModel>
+                <option value="" selected disabled>Valoracion</option>
+                <option [value]="1">Buena</option>
+                <option [value]="0">Mala</option>
+            </select>
+            <input class="btn btn-success" type="submit" value="{{editMode ? 'Update Comment' : 'Add Comment'}}">
+        </form>
 
     </div>
 </section>

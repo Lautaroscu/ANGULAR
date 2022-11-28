@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EventType } from '@angular/router';
 import { ChaptersDataService } from 'src/app/services/chapters-data.service';
-import { Comments } from '../chapters-component/interf-chapters';
+import { Comments } from '../comments-component/interf-comments';
 
 @Component({
   selector: 'app-actions',
@@ -14,58 +13,50 @@ export class ActionsComponent implements OnInit {
 
   @Input()
   id_comentario!: string;
-  
+
   @Input()
   comments!: Comments[];
   @Input()
   form!: NgForm;
-  @Output() 
-  
+  @Output()
 
- 
-  @Input() 
+  @Input()
   editMode: boolean = false;
-  @Output() 
-  editModeChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  editModeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private DataService: ChaptersDataService) { }
 
   ngOnInit(): void {
-  console.log(this.id_comentario)
   }
-  changeValue():boolean{
-    return this.editMode =  true;
+  changeValue(): boolean {
+    return this.editMode = true;
   }
   updateComment() {
-    
-    let value = this.changeValue() ;
-   if(value == true){
-    this.editModeChange.emit(value);
-   }
+
+    let value = this.changeValue();
+    if (value == true) {
+      this.editModeChange.emit(value);
+    }
     let CurrentComment = this.comments.find((p) => { return p.id_comentario == this.id_comentario });
     if (CurrentComment) {
       this.form.setValue({
         comentario: CurrentComment.comentario,
-        capitulo: CurrentComment.capitulo,
-        valoracion: CurrentComment.valoracion
+        id_capitulo_fk: CurrentComment.id_capitulo_fk,
+        valoracion: CurrentComment.valoracion,
+        id_comentario: CurrentComment.id_comentario
+
       }
-      )}
+      )
+    }
 
   }
 
-  editComment():void{
-    
-    this.DataService.updateComment(this.id_comentario , this.comments )
-    .subscribe(
-      e =>{
-        console.log(e) ;
-      }
-    )
-  }
+
   deleteComment() {
     this.DataService.deleteComment(this.id_comentario)
       .subscribe(
-       
-      )
+
+    )
   }
 
 }
