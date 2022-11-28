@@ -4,7 +4,7 @@ export interface Chapters {
     'descripcion' : string ,
     'numero_cap' : number ,
     'id_temp_fk' : number ,
-    'img' : string
+    'image' : string
 }
 
 

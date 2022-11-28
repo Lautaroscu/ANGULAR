@@ -22,11 +22,12 @@
                  </thead>
  
                  <tbody>
-                       <tr *ngFor="let season of seasons">
+                       <tr *ngFor="let season of seasons index as i">
+                       
                           <td>{{season.titulo_temp}}</td>
                           <td>{{season.descripcion}}</td>
                           <td>{{season.fecha_estreno}}</td>
-                          <td>{{season.numero_temp}}</td>
+                          <td>{{i+1}}</td>
 
                        </tr>
                  

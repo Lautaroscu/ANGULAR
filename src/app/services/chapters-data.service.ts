@@ -4,11 +4,9 @@ import { Observable, Subject, tap } from 'rxjs';
 import { Chapters } from '../components/chapters-component/interf-chapters';
 import { Comments } from '../components/comments-component/interf-comments';
 import { Seasons } from '../components/breaking-bad-component/interf-seasons';
-const URL:string = 'http://localhost/API-RESTFULL/api/chapters' ;
- const URLCOMMENTS:string = 'http://localhost/API-RESTFULL/api/chapters/comments' ;
-const ALLCOMMENTS:string = 'http://localhost/API-RESTFULL/api/comments' ;
-const URLSEASONS:string = 'http://localhost/API-RESTFULL/api/temporadas' ;
-const ChapterBySeasons:string = 'http://localhost/API-RESTFULL/api/seasons' ;
+const URL:string = 'https://62b49373da3017eabb0d8683.mockapi.io/api/chapters' ;
+ const URLCOMMENTS:string = 'https://62b49373da3017eabb0d8683.mockapi.io/api/comments' ;
+const URLSEASONS:string = 'https://62b49373da3017eabb0d8683.mockapi.io/api/seasons' ;
 
 
 
@@ -17,9 +15,8 @@ const ChapterBySeasons:string = 'http://localhost/API-RESTFULL/api/seasons' ;
   providedIn: 'root'
 }) 
 export class ChaptersDataService {
-  private header;
+
   constructor(private http:HttpClient ) { 
-    this.header = new HttpHeaders({'myHeader' : 'Lautaroscuu'})
   }
   private refresh$ = new Subject<void>() ;
   chapters:Chapters[] = []
@@ -37,8 +34,7 @@ export class ChaptersDataService {
   
       
   public getAllComments():Observable<Comments[]>{
-    return this.http.get<Comments[]>(ALLCOMMENTS);
-
+    return this.http.get<Comments[]>(URLCOMMENTS) ;
    
   }
  
@@ -70,10 +66,15 @@ export class ChaptersDataService {
     }
   
  public getAllSeasons():Observable<Seasons[]>{
- return this.http.get<Seasons[]>(URLSEASONS) ;
+ return this.http.get<Seasons[]>(URLSEASONS)
+ .pipe(
+  tap(seasons => {
+    seasons.forEach(s => {
+      s.numero_temp = 1
+    })
+  })
+ )
  }
- public filterChapters(id_fk:string):Observable<Chapters[]>{
-  return this.http.get<Chapters[]>(`${ChapterBySeasons}?season=${id_fk}`)
- }
+ 
 }
 

@@ -14,7 +14,6 @@ import { MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
-import { ChaptersFiltersComponent } from './components/chapters-filters/chapters-filters.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,7 @@ import { ChaptersFiltersComponent } from './components/chapters-filters/chapters
     BreakingBadComponentComponent,
     ActionsComponent,
     PaginatePipe , 
-    AboutComponent, ChaptersFiltersComponent 
+    AboutComponent
 
     
   ],

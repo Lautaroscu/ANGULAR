@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ChaptersDataService } from '../../services/chapters-data.service';
 import { Subscription } from 'rxjs';
 import { NgForm, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +17,8 @@ import { PageEvent } from '@angular/material';
 export class CommentsComponentComponent implements OnInit, OnDestroy {
   editMode: boolean = false;
   id_comentario!: string;
+  @Output()
+  showErrorChange:EventEmitter<string> = new EventEmitter<string>()
 
   comments: Comments[] = [];
   suscription!: Subscription;
@@ -46,8 +48,12 @@ export class CommentsComponentComponent implements OnInit, OnDestroy {
     console.log("closed");
   }
   getAll(): void {
-    this.DataService.getAllComments()
-      .subscribe(comments => this.comments = comments);
+  const chapters = this.DataService.getAllComments() ;
+  if(chapters){
+     chapters.subscribe(comments => this.comments = comments);
+  }
+
+     
   }
   getAllChapters(): void {
     this.DataService.getAll()
@@ -72,10 +78,13 @@ export class CommentsComponentComponent implements OnInit, OnDestroy {
             console.log(comments)
            }
         )
-      
+           
     }
-
-
+  }
+  showError(error:string){
+    if(error){
+      this.showErrorChange.emit(error) 
+    }
   }
 }
 

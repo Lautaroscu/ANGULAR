@@ -11,15 +11,15 @@
                 <th>Acciones</th>
 
             </thead>
-            <tbody>
+            <tbody >
+                <div *ngIf="comments.length == 0" (showErrorChange)="showError('No hay comentarios')">
+                        
+                </div>
 
-                <tr *ngFor="let comment of comments | paginate:page_size:page_number">
-                    <td>{{comment.titulo_cap}}</td>
+                <tr *ngFor="let comment of comments | paginate:page_size:page_number" >
+                    <td>{{comment.id_capitulo_fk}}</td>
                     <td>{{comment.comentario}}</td>
-                    <td >{{comment.valoracion}}</td>
-                  
-
-
+                     <td>{{comment.valoracion}}</td>
                     <td>
                         <app-actions [(editMode)]="editMode" [form]="form" [comments]="comments"
                             [id_comentario]="comment.id_comentario"></app-actions>
@@ -29,7 +29,7 @@
         </table>
 
 
-        <mat-paginator (page)="handlePage($event)" [length]="comments.length" [pageSize]="page_size"
+        <mat-paginator *ngIf="comments.length" (page)="handlePage($event)" [length]="comments.length" [pageSize]="page_size"
             aria-label="Select page">
         </mat-paginator>
 
@@ -49,8 +49,8 @@
                     [value]="comment.id_comentario">
             </div>
             
-                <select  name="id_capitulo_fk" ngModel>
-                    <option value="" selected>Capitulo</option>
+                <select *ngIf="!editMode"  name="id_capitulo_fk" ngModel>
+                    <option value="" disabled selected>Capitulo</option>
                     <option *ngFor="let chapter of chapters" value="{{chapter.id_capitulo}}">{{chapter.titulo_cap}}
                     </option>
                 </select>
@@ -61,10 +61,11 @@
 
             <select class="form-control" name="" id="" name="valoracion" ngModel>
                 <option value="" selected disabled>Valoracion</option>
-                <option [value]="1">Buena</option>
-                <option [value]="0">Mala</option>
+                <option value="Buena">Buena</option>
+                <option value="Mala">Mala</option>
             </select>
-            <input class="btn btn-success" type="submit" value="{{editMode ? 'Update Comment' : 'Add Comment'}}">
+            <input  class="btn btn-success" type="submit" value="{{editMode ? 'Update Comment' : 'Add Comment'}}"> 
+             <button class="btn btn-primary"><a class="nav-link" [routerLink]="['/home']">Volver</a></button>
         </form>
 
     </div>

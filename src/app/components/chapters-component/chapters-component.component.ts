@@ -1,6 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { PageEvent } from '@angular/material';
 import { ChaptersDataService } from '../../services/chapters-data.service';
 import { Chapters } from './interf-chapters';

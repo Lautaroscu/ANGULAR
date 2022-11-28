@@ -1,9 +1,9 @@
-
+<p><small>sorry for the style :(</small> </p>
 <section class="chapters">  
     <div class="row">
  <div class="card" *ngFor="let chapter of chapters  | paginate:page_size:page_number">
          <div class="card-body">
-            <img src="assets/img/breakingbadimg.png" alt="breakingbadimg" srcset="">
+            <img src="assets/img/breakingbadimg.png" alt="breakingbadimg">
              <h5 class="card-title"> {{chapter.numero_cap}} {{chapter.titulo_cap}}</h5>
              <p class="card-text">{{chapter.descripcion | slice:0:50}}... </p>
             
