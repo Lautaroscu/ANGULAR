@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ChaptersDataService } from '../../services/chapters-data.service';
 import { Subscription } from 'rxjs';
-import { NgForm, ReactiveFormsModule } from '@angular/forms';
+import { NgForm} from '@angular/forms';
 import { Comments } from './interf-comments';
 import { Chapters } from '../chapters-component/interf-chapters';
 import { PageEvent } from '@angular/material';

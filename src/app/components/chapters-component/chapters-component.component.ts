@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { ChaptersDataService } from '../../services/chapters-data.service';
 import { Chapters } from './interf-chapters';

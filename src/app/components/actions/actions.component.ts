@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ChaptersDataService } from 'src/app/services/chapters-data.service';
+import { ChaptersDataService } from '../../services/chapters-data.service';
 import { Comments } from '../comments-component/interf-comments';
 
 @Component({

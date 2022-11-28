@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChaptersDataService } from 'src/app/services/chapters-data.service';
+import { ChaptersDataService } from '../../services/chapters-data.service';
 import { Seasons } from './interf-seasons';
 
 @Component({
@@ -19,9 +19,9 @@ seasons:Seasons[] = [] ;
     .subscribe(
   seasons => {
     this.seasons = seasons
-    console.log("hola") 
-  });
-  }
+    
+  })
   
 
+}
 }
